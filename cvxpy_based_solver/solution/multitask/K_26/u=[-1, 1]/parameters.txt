@@ -1,0 +1,2 @@
+initial_trust_region = 54
+w_nu=1e5, rho_1=0.1, rho_2=0.8, alpha=1.5, beta=2.5
