@@ -1,0 +1,30 @@
+# stlpy_cvx 运行环境（2026-10-03 在 Windows 11 + conda 24.11 上实测可用）
+# 创建： conda env create -f environment.yml
+# 注意：
+#   - 只覆盖 cvxpy_based_solver/（SCvx 求解器，stlpy 基准）及各 plot 脚本。
+#   - stlpy_comparison_experiments/ 需要 pydrake（Drake 不支持原生 Windows，只能在 Linux/macOS/WSL 上装）。
+#   - commonroad/ 需要 commonroad-drivability-checker（其源码包含带冒号的文件名，无法在 Windows 上解包安装）。
+name: stlpy_cvx
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy=2.4
+  - scipy=1.17
+  - matplotlib=3.11
+  - sympy=1.14
+  - cvxpy-base=1.9
+  - ecos=2.0          # 代码里写死 solver='ECOS'；cvxpy>=1.6 不再自带 ECOS，必须单独装
+  - clarabel
+  - osqp
+  - scs
+  - pandas=3.0
+  - seaborn=0.13
+  - ipython            # commonroad/ 中 from IPython.display import clear_output
+  - treelib            # stlpy 依赖
+  - pytest
+  - pip
+  - pip:
+      - stlpy==0.3.0
+      - commonroad-io==2026.1        # 仅 commonroad/ 需要；单独装它仍不足以跑 commonroad/ 实验
+      - commonroad-vehicle-models==3.0.2

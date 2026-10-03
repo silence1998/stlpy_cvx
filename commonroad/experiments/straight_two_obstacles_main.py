@@ -19,7 +19,7 @@ from visualization import plotTrajectory, plotVelocityAcceleration
 
 
 # generate path of the file to be read
-path_file = "./scenario/ZAM_Urban-3_3_Repair copy.xml"
+path_file = "./scenario/ZAM_Urban-3_3_Repair_narrow_gap.xml"
 
 # read in the scenario and planning problem set
 scenario, planning_problem_set = CommonRoadFileReader(path_file).open()

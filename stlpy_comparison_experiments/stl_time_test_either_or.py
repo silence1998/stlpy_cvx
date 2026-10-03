@@ -1,4 +1,10 @@
 #!/usr/bin/env python
+import os
+
+# 输出目录：结果写到本子项目的 outputs/ 下（自动创建），不会覆盖已提交的 results/ 数据。
+OUT_DIR = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "outputs", "time_test", "stlpy_either_or"))
+os.makedirs(OUT_DIR, exist_ok=True)
+
 
 ##
 #
@@ -133,10 +139,10 @@ for i in range(15, 81):
     number_of_variable.append(solver.mp.num_vars())
     total_solve_time_list.append(solve_time)
     if i % 5 == 0:
-        np.save("time_test_result/time_step.npy", np.array(time_step))
-        np.save("time_test_result/number_of_variable.npy", np.array(number_of_variable))
-        np.save("time_test_result/total_solve_time_list.npy", np.array(total_solve_time_list))
+        np.save(os.path.join(OUT_DIR, "time_step.npy"), np.array(time_step))
+        np.save(os.path.join(OUT_DIR, "number_of_variable.npy"), np.array(number_of_variable))
+        np.save(os.path.join(OUT_DIR, "total_solve_time_list.npy"), np.array(total_solve_time_list))
 
-np.save("time_test_result/time_step.npy", np.array(time_step))
-np.save("time_test_result/number_of_variable.npy", np.array(number_of_variable))
-np.save("time_test_result/total_solve_time_list.npy", np.array(total_solve_time_list))
+np.save(os.path.join(OUT_DIR, "time_step.npy"), np.array(time_step))
+np.save(os.path.join(OUT_DIR, "number_of_variable.npy"), np.array(number_of_variable))
+np.save(os.path.join(OUT_DIR, "total_solve_time_list.npy"), np.array(total_solve_time_list))
